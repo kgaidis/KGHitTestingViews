@@ -18,7 +18,8 @@ Subclass `KGHitTestingView` or `KGHitTestingButton` and set `minimumHitTestHeigh
 ```
 
 ### In Interface Builder:
-Subclass `KGHitTestingView` or `KGHitTestingButton` and set the runtime attributes:
+Subclass `KGHitTestingView` or `KGHitTestingButton` in the "Identify Inspector" and set the width and height values in the "Attributes Inspector."
+
 ![](Images/InterfaceBuilderSubclassExample.png)
 
 ### Important note: 
@@ -34,6 +35,10 @@ Hit test (`-hitTest:`) is a more-complex algorithmic test that involves looping 
 
 ## Credits
 Created and maintained by Krisjanis Gaidis. 
+
+Contributions:
+
+* IBInspectable addition by [mailworks](https://github.com/mailworks).
 
 ## License
 KGHitTestingViews is released under the MIT license. See LICENSE for details.
