@@ -11,7 +11,7 @@
 
 @interface KGHitTestingView : UIView <KGHitTesting>
 
-@property (nonatomic) CGFloat minimumHitTestHeight;
-@property (nonatomic) CGFloat minimumHitTestWidth;
+@property (nonatomic) IBInspectable CGFloat minimumHitTestHeight;
+@property (nonatomic) IBInspectable CGFloat minimumHitTestWidth;
 
 @end
