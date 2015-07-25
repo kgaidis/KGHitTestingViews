@@ -11,7 +11,7 @@
 
 @interface KGHitTestingButton : UIButton <KGHitTesting>
 
-@property (nonatomic) IBInspectable CGFloat minimumHitTestHeight;
 @property (nonatomic) IBInspectable CGFloat minimumHitTestWidth;
+@property (nonatomic) IBInspectable CGFloat minimumHitTestHeight;
 
 @end

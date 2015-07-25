@@ -41,7 +41,8 @@ static NSString *const kHeightKeyPath = @"button.minimumHitTestHeight";
     
     // Important Note:
     // The 'minimumHitTestWidth' and 'minimumHitTestHeight' are first set as the
-    // "User Defined Runtime Attributes" in "Main.storyboard" for the UIButton.
+    // IBInspectable "User Defined Runtime Attributes" in "Main.storyboard" for
+    // the UIButton.
     
     [self updateOutlets];
 }
@@ -57,7 +58,6 @@ static NSString *const kHeightKeyPath = @"button.minimumHitTestHeight";
 #pragma mark - Helpers -
 
 - (void)setupSliders {
-    
     // Autolayout doesn't seem to like height/width values of 0.
     self.widthSlider.minimumValue = 1.0;
     self.heightSlider.minimumValue = 1.0;
@@ -102,13 +102,11 @@ static NSString *const kHeightKeyPath = @"button.minimumHitTestHeight";
 #pragma mark - Slider actions -
 
 - (IBAction)didChangeValueOfWidthSlider:(UISlider *)widthSlider {
-    
     [widthSlider setValue:(NSUInteger)(widthSlider.value + 0.5) animated:NO];
     self.button.minimumHitTestWidth = widthSlider.value;
 }
 
 - (IBAction)didChangeValueOfHeightSlider:(UISlider *)heightSlider {
-    
     [heightSlider setValue:(NSUInteger)(heightSlider.value + 0.5) animated:NO];
     self.button.minimumHitTestHeight = heightSlider.value;
 }

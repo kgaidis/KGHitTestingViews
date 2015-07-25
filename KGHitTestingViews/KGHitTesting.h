@@ -13,8 +13,8 @@
 
 @required
 
-@property (nonatomic) IBInspectable CGFloat minimumHitTestHeight;
 @property (nonatomic) IBInspectable CGFloat minimumHitTestWidth;
+@property (nonatomic) IBInspectable CGFloat minimumHitTestHeight;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 
