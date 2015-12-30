@@ -16,18 +16,7 @@
 		01B610BA1AF561C6001BCC44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B610B81AF561C6001BCC44 /* Main.storyboard */; };
 		01B610BC1AF561C6001BCC44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B610BB1AF561C6001BCC44 /* Images.xcassets */; };
 		01B610BF1AF561C6001BCC44 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B610BD1AF561C6001BCC44 /* LaunchScreen.xib */; };
-		01B610CB1AF561C6001BCC44 /* KGHitTestingViewsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B610CA1AF561C6001BCC44 /* KGHitTestingViewsExampleTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		01B610C51AF561C6001BCC44 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01B610A31AF561C6001BCC44 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 01B610AA1AF561C6001BCC44;
-			remoteInfo = KGHitTestingViewsExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0124079D1B0056F300B377D8 /* KGHitTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KGHitTesting.h; sourceTree = "<group>"; };
@@ -47,20 +36,10 @@
 		01B610B91AF561C6001BCC44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01B610BB1AF561C6001BCC44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		01B610BE1AF561C6001BCC44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		01B610C41AF561C6001BCC44 /* KGHitTestingViewsExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KGHitTestingViewsExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		01B610C91AF561C6001BCC44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01B610CA1AF561C6001BCC44 /* KGHitTestingViewsExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingViewsExampleTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		01B610A81AF561C6001BCC44 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01B610C11AF561C6001BCC44 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				01B610AD1AF561C6001BCC44 /* KGHitTestingViewsExample */,
-				01B610C71AF561C6001BCC44 /* KGHitTestingViewsExampleTests */,
 				01B610AC1AF561C6001BCC44 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				01B610AB1AF561C6001BCC44 /* KGHitTestingViewsExample.app */,
-				01B610C41AF561C6001BCC44 /* KGHitTestingViewsExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,23 +105,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		01B610C71AF561C6001BCC44 /* KGHitTestingViewsExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				01B610CA1AF561C6001BCC44 /* KGHitTestingViewsExampleTests.m */,
-				01B610C81AF561C6001BCC44 /* Supporting Files */,
-			);
-			path = KGHitTestingViewsExampleTests;
-			sourceTree = "<group>";
-		};
-		01B610C81AF561C6001BCC44 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				01B610C91AF561C6001BCC44 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,24 +125,6 @@
 			productReference = 01B610AB1AF561C6001BCC44 /* KGHitTestingViewsExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		01B610C31AF561C6001BCC44 /* KGHitTestingViewsExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 01B610D11AF561C6001BCC44 /* Build configuration list for PBXNativeTarget "KGHitTestingViewsExampleTests" */;
-			buildPhases = (
-				01B610C01AF561C6001BCC44 /* Sources */,
-				01B610C11AF561C6001BCC44 /* Frameworks */,
-				01B610C21AF561C6001BCC44 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				01B610C61AF561C6001BCC44 /* PBXTargetDependency */,
-			);
-			name = KGHitTestingViewsExampleTests;
-			productName = KGHitTestingViewsExampleTests;
-			productReference = 01B610C41AF561C6001BCC44 /* KGHitTestingViewsExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,10 +136,6 @@
 				TargetAttributes = {
 					01B610AA1AF561C6001BCC44 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					01B610C31AF561C6001BCC44 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 01B610AA1AF561C6001BCC44;
 					};
 				};
 			};
@@ -215,7 +153,6 @@
 			projectRoot = "";
 			targets = (
 				01B610AA1AF561C6001BCC44 /* KGHitTestingViewsExample */,
-				01B610C31AF561C6001BCC44 /* KGHitTestingViewsExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -228,13 +165,6 @@
 				01B610BA1AF561C6001BCC44 /* Main.storyboard in Resources */,
 				01B610BF1AF561C6001BCC44 /* LaunchScreen.xib in Resources */,
 				01B610BC1AF561C6001BCC44 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01B610C21AF561C6001BCC44 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,23 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01B610C01AF561C6001BCC44 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				01B610CB1AF561C6001BCC44 /* KGHitTestingViewsExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		01B610C61AF561C6001BCC44 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 01B610AA1AF561C6001BCC44 /* KGHitTestingViewsExample */;
-			targetProxy = 01B610C51AF561C6001BCC44 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		01B610B81AF561C6001BCC44 /* Main.storyboard */ = {
@@ -396,40 +310,6 @@
 			};
 			name = Release;
 		};
-		01B610D21AF561C6001BCC44 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KGHitTestingViewsExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KGHitTestingViewsExample.app/KGHitTestingViewsExample";
-			};
-			name = Debug;
-		};
-		01B610D31AF561C6001BCC44 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = KGHitTestingViewsExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KGHitTestingViewsExample.app/KGHitTestingViewsExample";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -447,15 +327,6 @@
 			buildConfigurations = (
 				01B610CF1AF561C6001BCC44 /* Debug */,
 				01B610D01AF561C6001BCC44 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		01B610D11AF561C6001BCC44 /* Build configuration list for PBXNativeTarget "KGHitTestingViewsExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				01B610D21AF561C6001BCC44 /* Debug */,
-				01B610D31AF561C6001BCC44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
