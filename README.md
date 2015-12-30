@@ -3,7 +3,7 @@
 
 It's common to display buttons as small as 20 x 20 points. However, [iOS User Interface Guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html) recommends that all tappable controls have at least a 44 x 44 point hit area. A common solution to this problem involves making a large button containing a small image, but this solution impacts positioning constraints relative to the small image and makes the layout generally more awkward. **KGHitTestingViews** aims to solve this problem in a simple manner.
 
-## How to use
+## How to Use
 
 ### In Code:
 Subclass `KGHitTestingView` or `KGHitTestingButton` and set `minimumHitTestHeight` and `minimumHitTestWidth` to the desired size of the hit test area:
@@ -26,6 +26,9 @@ Subclass `KGHitTestingView` or `KGHitTestingButton` in the "Identify Inspector" 
 
 ### Important note: 
 The height and width of the hit test area are *minimums*. If you specify a smaller hit area width or height than what the bounds specify, the bounds width or height will be used.
+
+## Swift Support
+KGHitTestingViews works with Swift! Just follow the "How to Use" section.
 
 ## FAQ
 ###What is hit testing?
