@@ -1,16 +1,18 @@
 ## Overview
-**KGHitTestingViews** is a small helper library to effortlessly increase the hit test area of a view or a button. It's common to display buttons as small as 20 x 20 points. However, [iOS User Interface Guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html) recommends that all tappable controls have at least a 44 x 44 point hit area. A common solution to this problem involves making a large button containing a small image, but this solution impacts positioning constraints relative to the small image and makes the layout generally more awkward. **KGHitTestingViews** aims to solve this problem in a simple manner.
+**KGHitTestingViews** is a small helper library to effortlessly increase the hit test area of a view or a button. 
+
+It's common to display buttons as small as 20 x 20 points. However, [iOS User Interface Guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html) recommends that all tappable controls have at least a 44 x 44 point hit area. A common solution to this problem involves making a large button containing a small image, but this solution impacts positioning constraints relative to the small image and makes the layout generally more awkward. **KGHitTestingViews** aims to solve this problem in a simple manner.
 
 ## How to use
 
 ### In Code:
 Subclass `KGHitTestingView` or `KGHitTestingButton` and set `minimumHitTestHeight` and `minimumHitTestWidth` to the desired size of the hit test area:
 
-```
+```objective-c
 @interface ButtonSubclass : KGHitTestingButton
 @end
 ```
-```
+```objective-c
 - (void)setup {
 	self.minimumHitTestWidth = 44.0;
 	self.minimumHitTestHeight = 44.0;
