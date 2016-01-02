@@ -3,6 +3,16 @@
 
 It's common to display buttons as small as 20 x 20 points. However, [iOS User Interface Guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html) recommends that all tappable controls have at least a 44 x 44 point hit area. A common solution to this problem involves making a large button containing a small image, but this solution impacts positioning constraints relative to the small image and makes the layout generally more awkward. **KGHitTestingViews** aims to solve this problem in a simple manner.
 
+## Installation
+
+To install using [CocoaPods](https://github.com/cocoapods/cocoapods), add the following to your project Podfile:
+
+```ruby
+pod 'KGHitTestingViews'
+```
+
+Alternatively, drag and drop all of the files in the KGHitTestingViews folder into your Xcode project, agreeing to copy files if needed.
+
 ## How to Use
 
 ### In Code:
