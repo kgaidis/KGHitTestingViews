@@ -13,6 +13,8 @@
 		01943F3F1AF5997A005642B0 /* KGHitTestingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F3C1AF5997A005642B0 /* KGHitTestingView.m */; };
 		01943F411AF59CE6005642B0 /* KGHitTestViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F401AF59CE6005642B0 /* KGHitTestViewTests.m */; };
 		01943F431AF5A573005642B0 /* KGHitTestButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F421AF5A573005642B0 /* KGHitTestButtonTests.m */; };
+		0197EEA01C41DB1D00ACC75F /* KGHitTestingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0197EE9F1C41DB1D00ACC75F /* KGHitTestingControl.m */; };
+		0197EEA21C41DB9800ACC75F /* KGHitTestControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0197EEA11C41DB9800ACC75F /* KGHitTestControlTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		01943F3C1AF5997A005642B0 /* KGHitTestingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingView.m; sourceTree = "<group>"; };
 		01943F401AF59CE6005642B0 /* KGHitTestViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestViewTests.m; sourceTree = "<group>"; };
 		01943F421AF5A573005642B0 /* KGHitTestButtonTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestButtonTests.m; sourceTree = "<group>"; };
+		0197EE9E1C41DB1D00ACC75F /* KGHitTestingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingControl.h; sourceTree = "<group>"; };
+		0197EE9F1C41DB1D00ACC75F /* KGHitTestingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingControl.m; sourceTree = "<group>"; };
+		0197EEA11C41DB9800ACC75F /* KGHitTestControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestControlTests.m; sourceTree = "<group>"; };
 		01B610DF1AF56269001BCC44 /* KGHitTestingViewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KGHitTestingViewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B610E31AF56269001BCC44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +57,8 @@
 				01943F3C1AF5997A005642B0 /* KGHitTestingView.m */,
 				01943F371AF5997A005642B0 /* KGHitTestingButton.h */,
 				01943F3A1AF5997A005642B0 /* KGHitTestingButton.m */,
+				0197EE9E1C41DB1D00ACC75F /* KGHitTestingControl.h */,
+				0197EE9F1C41DB1D00ACC75F /* KGHitTestingControl.m */,
 			);
 			name = KGHitTestingViews;
 			path = ../../KGHitTestingViews;
@@ -80,6 +87,7 @@
 				014191AD1B0025C900262180 /* KGHitTestBaseTest.m */,
 				01943F401AF59CE6005642B0 /* KGHitTestViewTests.m */,
 				01943F421AF5A573005642B0 /* KGHitTestButtonTests.m */,
+				0197EEA11C41DB9800ACC75F /* KGHitTestControlTests.m */,
 				01943F361AF59950005642B0 /* KGHitTestingViews */,
 				01B610E21AF56269001BCC44 /* Supporting Files */,
 			);
@@ -160,9 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				01943F411AF59CE6005642B0 /* KGHitTestViewTests.m in Sources */,
+				0197EEA01C41DB1D00ACC75F /* KGHitTestingControl.m in Sources */,
 				01943F3D1AF5997A005642B0 /* KGHitTestingButton.m in Sources */,
 				01943F3F1AF5997A005642B0 /* KGHitTestingView.m in Sources */,
 				01943F431AF5A573005642B0 /* KGHitTestButtonTests.m in Sources */,
+				0197EEA21C41DB9800ACC75F /* KGHitTestControlTests.m in Sources */,
 				014191B11B002D9B00262180 /* KGHitTestBaseTest.m in Sources */,
 				01943F3E1AF5997A005642B0 /* KGHitTestingHelper.m in Sources */,
 			);
