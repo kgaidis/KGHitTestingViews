@@ -1,5 +1,5 @@
 ## Overview
-**KGHitTestingViews** is a small helper library to effortlessly increase the hit test area of a view, control or a button. 
+**KGHitTestingViews** is a small helper library to **effortlessly increase the hit test area of a view**.
 
 It's common to display buttons as small as 20 x 20 points. However, [iOS User Interface Guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/LayoutandAppearance.html) recommends that all tappable controls have at least a 44 x 44 point hit area. A common solution to this problem involves making a large button containing a small image, but this solution impacts positioning constraints relative to the small image and makes the layout generally more awkward. **KGHitTestingViews** aims to solve this problem in a simple manner.
 
@@ -15,7 +15,16 @@ Alternatively, drag and drop all of the files in the KGHitTestingViews folder in
 
 ## How to Use
 
-### In Code:
+### In Code (Category):
+The easiest way to use **KGHitTestingViews** is to use the `UIView` category: `"UIView+KGHitTesting.h"`. No subclassing required!
+
+```objective-c
+@interface UIView (KGHitTesting)
+- (void)setMinimumHitTestWidth:(CGFloat)width height:(CGFloat)height;
+@end
+```
+
+### In Code (Subclassing):
 Subclass `KGHitTestingView` or `KGHitTestingControl` or `KGHitTestingButton` and set `minimumHitTestHeight` and `minimumHitTestWidth` to the desired size of the hit test area:
 
 ```objective-c
@@ -29,7 +38,7 @@ Subclass `KGHitTestingView` or `KGHitTestingControl` or `KGHitTestingButton` and
 }
 ```
 
-### In Interface Builder:
+### In Interface Builder (Subclassing):
 Subclass `KGHitTestingView` or `KGHitTestingControl` or `KGHitTestingButton` in the "Identify Inspector" and set the width and height values in the "Attributes Inspector."
 
 ![](Images/InterfaceBuilderSubclassExample.png)

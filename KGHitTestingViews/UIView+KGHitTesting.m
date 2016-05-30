@@ -14,8 +14,7 @@ static NSString * const kKGHitTestingClassPrefix = @"KGHitTesting_";
 
 @implementation UIView (KGHitTesting)
 
-- (void)setMinimumHitTestWidth:(CGFloat)width height:(CGFloat)height
-{
+- (void)setMinimumHitTestWidth:(CGFloat)width height:(CGFloat)height {
     [self kg_setMinimumHitTestWidth:width];
     [self kg_setMinimumHitTestHeight:height];
     
@@ -46,23 +45,19 @@ static NSString * const kKGHitTestingClassPrefix = @"KGHitTesting_";
 
 #pragma mark - Properties -
 
-- (void)kg_setMinimumHitTestWidth:(CGFloat)minimumHitTestWidth
-{
+- (void)kg_setMinimumHitTestWidth:(CGFloat)minimumHitTestWidth {
     objc_setAssociatedObject(self, @selector(kg_minimumHitTestWidth), @(minimumHitTestWidth), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)kg_minimumHitTestWidth
-{
+- (CGFloat)kg_minimumHitTestWidth {
     return [objc_getAssociatedObject(self, @selector(kg_minimumHitTestWidth)) floatValue];
 }
 
-- (void)kg_setMinimumHitTestHeight:(CGFloat)minimumHitTestHeight
-{
+- (void)kg_setMinimumHitTestHeight:(CGFloat)minimumHitTestHeight {
     objc_setAssociatedObject(self, @selector(kg_minimumHitTestHeight), @(minimumHitTestHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)kg_minimumHitTestHeight
-{
+- (CGFloat)kg_minimumHitTestHeight {
     return [objc_getAssociatedObject(self, @selector(kg_minimumHitTestHeight)) floatValue];
 }
 
