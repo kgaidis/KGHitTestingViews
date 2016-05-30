@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		014191B11B002D9B00262180 /* KGHitTestBaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 014191AD1B0025C900262180 /* KGHitTestBaseTest.m */; };
+		01596BDA1CFBD7D4006241B7 /* UIView+KGHitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 01596BD91CFBD7D4006241B7 /* UIView+KGHitTesting.m */; };
+		01596BDC1CFBD85C006241B7 /* KGHitTestCategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01596BDB1CFBD85C006241B7 /* KGHitTestCategoryTests.m */; };
 		01943F3D1AF5997A005642B0 /* KGHitTestingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F3A1AF5997A005642B0 /* KGHitTestingButton.m */; };
 		01943F3E1AF5997A005642B0 /* KGHitTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F3B1AF5997A005642B0 /* KGHitTestingHelper.m */; };
 		01943F3F1AF5997A005642B0 /* KGHitTestingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01943F3C1AF5997A005642B0 /* KGHitTestingView.m */; };
@@ -21,6 +23,9 @@
 		014191AC1B0025C900262180 /* KGHitTestBaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestBaseTest.h; sourceTree = "<group>"; };
 		014191AD1B0025C900262180 /* KGHitTestBaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestBaseTest.m; sourceTree = "<group>"; };
 		014191B01B00298900262180 /* KGHitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTesting.h; sourceTree = "<group>"; };
+		01596BD81CFBD7D4006241B7 /* UIView+KGHitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KGHitTesting.h"; sourceTree = "<group>"; };
+		01596BD91CFBD7D4006241B7 /* UIView+KGHitTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KGHitTesting.m"; sourceTree = "<group>"; };
+		01596BDB1CFBD85C006241B7 /* KGHitTestCategoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestCategoryTests.m; sourceTree = "<group>"; };
 		01943F371AF5997A005642B0 /* KGHitTestingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingButton.h; sourceTree = "<group>"; };
 		01943F381AF5997A005642B0 /* KGHitTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingHelper.h; sourceTree = "<group>"; };
 		01943F391AF5997A005642B0 /* KGHitTestingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingView.h; sourceTree = "<group>"; };
@@ -59,6 +64,8 @@
 				01943F3A1AF5997A005642B0 /* KGHitTestingButton.m */,
 				0197EE9E1C41DB1D00ACC75F /* KGHitTestingControl.h */,
 				0197EE9F1C41DB1D00ACC75F /* KGHitTestingControl.m */,
+				01596BD81CFBD7D4006241B7 /* UIView+KGHitTesting.h */,
+				01596BD91CFBD7D4006241B7 /* UIView+KGHitTesting.m */,
 			);
 			name = KGHitTestingViews;
 			path = ../../KGHitTestingViews;
@@ -88,6 +95,7 @@
 				01943F401AF59CE6005642B0 /* KGHitTestViewTests.m */,
 				01943F421AF5A573005642B0 /* KGHitTestButtonTests.m */,
 				0197EEA11C41DB9800ACC75F /* KGHitTestControlTests.m */,
+				01596BDB1CFBD85C006241B7 /* KGHitTestCategoryTests.m */,
 				01943F361AF59950005642B0 /* KGHitTestingViews */,
 				01B610E21AF56269001BCC44 /* Supporting Files */,
 			);
@@ -168,12 +176,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01943F411AF59CE6005642B0 /* KGHitTestViewTests.m in Sources */,
+				01596BDC1CFBD85C006241B7 /* KGHitTestCategoryTests.m in Sources */,
 				0197EEA01C41DB1D00ACC75F /* KGHitTestingControl.m in Sources */,
 				01943F3D1AF5997A005642B0 /* KGHitTestingButton.m in Sources */,
 				01943F3F1AF5997A005642B0 /* KGHitTestingView.m in Sources */,
 				01943F431AF5A573005642B0 /* KGHitTestButtonTests.m in Sources */,
 				0197EEA21C41DB9800ACC75F /* KGHitTestControlTests.m in Sources */,
 				014191B11B002D9B00262180 /* KGHitTestBaseTest.m in Sources */,
+				01596BDA1CFBD7D4006241B7 /* UIView+KGHitTesting.m in Sources */,
 				01943F3E1AF5997A005642B0 /* KGHitTestingHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

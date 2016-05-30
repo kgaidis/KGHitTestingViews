@@ -10,6 +10,7 @@
 		0134810D1AF563560085731A /* KGHitTestingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0134810C1AF563560085731A /* KGHitTestingView.m */; };
 		013481101AF5636F0085731A /* KGHitTestingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0134810F1AF5636F0085731A /* KGHitTestingButton.m */; };
 		013481131AF564260085731A /* KGHitTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 013481121AF564260085731A /* KGHitTestingHelper.m */; };
+		01596BD71CFBD6AE006241B7 /* UIView+KGHitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 01596BD61CFBD6AE006241B7 /* UIView+KGHitTesting.m */; };
 		019A13EE1C41DEDB00AF7461 /* KGHitTestingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 019A13ED1C41DEDB00AF7461 /* KGHitTestingControl.m */; };
 		01B610B11AF561C6001BCC44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B610B01AF561C6001BCC44 /* main.m */; };
 		01B610B41AF561C6001BCC44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B610B31AF561C6001BCC44 /* AppDelegate.m */; };
@@ -27,6 +28,8 @@
 		0134810F1AF5636F0085731A /* KGHitTestingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingButton.m; sourceTree = "<group>"; };
 		013481111AF564260085731A /* KGHitTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingHelper.h; sourceTree = "<group>"; };
 		013481121AF564260085731A /* KGHitTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingHelper.m; sourceTree = "<group>"; };
+		01596BD51CFBD6AE006241B7 /* UIView+KGHitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KGHitTesting.h"; sourceTree = "<group>"; };
+		01596BD61CFBD6AE006241B7 /* UIView+KGHitTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KGHitTesting.m"; sourceTree = "<group>"; };
 		019A13EC1C41DEDB00AF7461 /* KGHitTestingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHitTestingControl.h; sourceTree = "<group>"; };
 		019A13ED1C41DEDB00AF7461 /* KGHitTestingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHitTestingControl.m; sourceTree = "<group>"; };
 		01B610AB1AF561C6001BCC44 /* KGHitTestingViewsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KGHitTestingViewsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +67,8 @@
 				019A13ED1C41DEDB00AF7461 /* KGHitTestingControl.m */,
 				013481111AF564260085731A /* KGHitTestingHelper.h */,
 				013481121AF564260085731A /* KGHitTestingHelper.m */,
+				01596BD51CFBD6AE006241B7 /* UIView+KGHitTesting.h */,
+				01596BD61CFBD6AE006241B7 /* UIView+KGHitTesting.m */,
 			);
 			name = KGHitTestingViews;
 			path = ../../KGHitTestingViews;
@@ -181,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B610B71AF561C6001BCC44 /* ViewController.m in Sources */,
+				01596BD71CFBD6AE006241B7 /* UIView+KGHitTesting.m in Sources */,
 				019A13EE1C41DEDB00AF7461 /* KGHitTestingControl.m in Sources */,
 				0134810D1AF563560085731A /* KGHitTestingView.m in Sources */,
 				013481131AF564260085731A /* KGHitTestingHelper.m in Sources */,
