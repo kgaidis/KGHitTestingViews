@@ -32,6 +32,7 @@ static NSString * const kKGHitTestingClassPrefix = @"KGHitTesting_";
             const char *types = [[NSString stringWithFormat:@"B@:%s@", @encode(CGPoint)] UTF8String];
             class_addMethod(newClass, @selector(pointInside:withEvent:), newImplementation, types);
             object_setClass(self, newClass);
+            objc_registerClassPair(newClass);
         }
         else { // We already created a 'KGHitTesting_[self class]', so just use the created one
             object_setClass(self, existingNewClass);

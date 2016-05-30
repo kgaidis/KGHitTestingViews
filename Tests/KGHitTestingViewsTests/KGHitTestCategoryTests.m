@@ -48,6 +48,21 @@
     XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
 }
 
+#pragma mark - KVO tests -
+
+- (void)testWhenRegisteringForKVO_afterSettingHitTestWidthHeight_thereShouldBeNoIssues {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view setMinimumHitTestWidth:20 height:20];
+    [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [view removeObserver:self forKeyPath:@"frame"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    // Empty
+}
+
 #pragma mark - Top left corner -
 - (void)testTopLeftCornerInBounds { [self _testTopLeftCornerInBounds]; }
 - (void)testTopLeftCornerOutOfBounds { [self _testTopLeftCornerOutOfBounds]; }
