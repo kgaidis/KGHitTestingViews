@@ -58,6 +58,14 @@
     [view removeObserver:self forKeyPath:@"frame"];
 }
 
+- (void)testWhenRegisteringForKVO_beforeSettingHitTestWidthHeight_thereShouldBeNoIssues {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    [view setMinimumHitTestWidth:20 height:20];
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [view removeObserver:self forKeyPath:@"frame"];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     // Empty
