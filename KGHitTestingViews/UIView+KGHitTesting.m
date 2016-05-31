@@ -19,29 +19,49 @@ static NSString * const kKGHitTestingClassPrefix = @"KGHitTesting_";
     [self kg_setMinimumHitTestHeight:height];
     
     Class currentClass = object_getClass(self);
-    NSString *currentClassName = NSStringFromClass(currentClass);
-
-    if (![currentClassName hasPrefix:kKGHitTestingClassPrefix]) {
-        
-        const char *newClassName = [[kKGHitTestingClassPrefix stringByAppendingString:currentClassName] UTF8String];
-        Class existingNewClass = objc_getClass(newClassName);
-        
-        if (existingNewClass == nil) {
-            Class newClass = objc_allocateClassPair(currentClass, [[kKGHitTestingClassPrefix stringByAppendingString:currentClassName] UTF8String], 0);
-            IMP newImplementation = class_getMethodImplementation([self class], @selector(kg_pointInside:withEvent:));
-            const char *types = [[NSString stringWithFormat:@"B@:%s@", @encode(CGPoint)] UTF8String];
-            class_addMethod(newClass, @selector(pointInside:withEvent:), newImplementation, types);
-            object_setClass(self, newClass);
+    
+    if (isKVOSubclass(self)) {
+        // We do NOT create a special class if the object was already 'isa-swizzled' by KVO.
+        // We just reuse the special KVO class.
+        [UIView kg_addHitTestImplementationToClass:currentClass];
+    }
+    else if (![NSStringFromClass(currentClass) hasPrefix:kKGHitTestingClassPrefix]) {
+        const char *newClassName = [[kKGHitTestingClassPrefix stringByAppendingString:NSStringFromClass(currentClass)] UTF8String];
+        Class newClass = objc_getClass(newClassName);
+        if (newClass == nil) { // 'KGHitTesting_[self class]' does not exist yet, so lets create it!
+            newClass = objc_allocateClassPair(currentClass, newClassName, 0);
+            [UIView kg_addHitTestImplementationToClass:newClass];
             objc_registerClassPair(newClass);
         }
-        else { // We already created a 'KGHitTesting_[self class]', so just use the created one
-            object_setClass(self, existingNewClass);
-        }
+        object_setClass(self, newClass);
     }
 }
 
++ (void)kg_addHitTestImplementationToClass:(Class)class {
+    NSAssert([class isSubclassOfClass:[UIView class]], @"We should only be adding KGHitTesting implementation to a UIView subclass.");
+    
+    Method kg_pointInsideMethod = class_getInstanceMethod(class, @selector(kg_pointInside:withEvent:));
+    IMP kg_pointInsideImplementation = class_getMethodImplementation(class, @selector(kg_pointInside:withEvent:));
+    
+    class_addMethod(class, @selector(pointInside:withEvent:), kg_pointInsideImplementation, method_getTypeEncoding(kg_pointInsideMethod));
+}
+
 - (BOOL)kg_pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    return CGRectContainsPoint(KGHitTestingBounds(self.bounds, [self kg_minimumHitTestWidth], [self kg_minimumHitTestHeight]), point);
+    if (objc_getAssociatedObject(self, @selector(kg_minimumHitTestWidth))) {
+        return CGRectContainsPoint(KGHitTestingBounds(self.bounds, [self kg_minimumHitTestWidth], [self kg_minimumHitTestHeight]), point);
+    }
+    
+    // If the Object was using KVO before using 'setMinimumHitTestWidth:height:', then
+    // after using 'setMinimumHitTestWidth:height:', its class remains something like 'KVO_Object'.
+    // This means that our custom 'pointInside:withEvent:' will get called for EVERY object that
+    // has the class 'KVO_Object' - even if they never called 'setMinimumHitTestWidth:height:'
+    // on that object. In those cases, the associated object ('kg_minimumHitTestWidth') will not be set.
+    // When we notice that case, we make sure to call the ORIGINAL 'pointInside:withEvent:' so
+    // there would be no surprises. 
+    NSAssert(isKVOSubclass(self), @"Logic error. The only time a custom 'pointInside:withEvent:' should get to this point is if the object is using KVO.");
+    Class actualClass = [self class];
+    IMP originalPointInside = class_getMethodImplementation(actualClass, @selector(pointInside:withEvent:));
+    return ((BOOL (*)(id, SEL, CGPoint, UIEvent *))originalPointInside)(self, _cmd, point, event);
 }
 
 #pragma mark - Properties -
@@ -60,6 +80,16 @@ static NSString * const kKGHitTestingClassPrefix = @"KGHitTesting_";
 
 - (CGFloat)kg_minimumHitTestHeight {
     return [objc_getAssociatedObject(self, @selector(kg_minimumHitTestHeight)) floatValue];
+}
+
+#pragma mark - Runtime helpers -
+// A lot of inspiration from:
+// https://github.com/mikeash/MAZeroingWeakRef
+
+static BOOL isKVOSubclass(id object) {
+    // [self class] gets overriden by the KVO class to return the super class
+    // However, 'class_getSuperclass' uncovers the actual class (which is 'NSKVONotifying_[self class]')
+    return [object class] == class_getSuperclass(object_getClass(object));
 }
 
 @end

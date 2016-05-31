@@ -10,6 +10,17 @@
 #import "KGHitTestBaseTest.h"
 #import "UIView+KGHitTesting.h"
 
+@interface CustomViewSubclass : UIView
+@property (nonatomic) BOOL calledCustomPointInsideImplementation;
+@end
+
+@implementation CustomViewSubclass
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    self.calledCustomPointInsideImplementation = YES;
+    return [super pointInside:point withEvent:event];
+}
+@end
+
 @interface KGHitTestCategoryTests : KGHitTestBaseTest
 
 @end
@@ -28,7 +39,7 @@
 
 #pragma mark - General tests -
 
-- (void)testWhenSettingMinimumWidthHeight_classNameShouldChange {
+- (void)testView_whenSettingMinimumWidthHeight_classNameShouldChange {
     UIView *view = [UIView new];
     Class initialClass = [view class];
     [view setMinimumHitTestWidth:10 height:10];
@@ -36,7 +47,7 @@
     XCTAssert(initialClass != newClass);
 }
 
-- (void)testWhenSettingMinimumWidthHeightMultipleTimes_thereShouldBeNoIssues {
+- (void)testView_whenSettingMinimumWidthHeight_hitAreaShouldAdjust {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     XCTAssertNotNil([view hitTest:CGPointMake(9, 9) withEvent:nil]);
     XCTAssertNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
@@ -48,9 +59,21 @@
     XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
 }
 
+- (void)testView_whenSettingMinimumWidthHeight_classNameShouldNotChangeMultipleTimes {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    Class initialClass = [view class];
+    [view setMinimumHitTestWidth:10 height:10];
+    Class newClass = [view class];
+    XCTAssert(initialClass != newClass);
+    [view setMinimumHitTestWidth:10 height:10];
+    XCTAssert([NSStringFromClass(newClass) isEqualToString:NSStringFromClass([view class])]);
+}
+
 #pragma mark - KVO tests -
 
-- (void)testWhenRegisteringForKVO_afterSettingHitTestWidthHeight_thereShouldBeNoIssues {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context { }
+
+- (void)testView_whenRegisteringForKVOAfterSettingHitTestWidthHeight_thereShouldBeNoCrashes {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [view setMinimumHitTestWidth:20 height:20];
     [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
@@ -58,7 +81,7 @@
     [view removeObserver:self forKeyPath:@"frame"];
 }
 
-- (void)testWhenRegisteringForKVO_beforeSettingHitTestWidthHeight_thereShouldBeNoIssues {
+- (void)testView_whenRegisteringForKVOBeforeSettingHitTestWidthHeight_thereShouldBeNoCrashes {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     [view setMinimumHitTestWidth:20 height:20];
@@ -66,9 +89,36 @@
     [view removeObserver:self forKeyPath:@"frame"];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    // Empty
+- (void)testView_whenRegisteringForKVOAndUsingSameViewMultipleTimes_thereShouldBeNoCrashes {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    [view setMinimumHitTestWidth:20 height:20];
+    
+    UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view2 addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    XCTAssert([view2 pointInside:CGPointMake(9, 9) withEvent:nil]);
+    XCTAssert(![view2 pointInside:CGPointMake(19, 19) withEvent:nil]);
+    
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [view removeObserver:self forKeyPath:@"frame"];
+    [view2 removeObserver:self forKeyPath:@"frame"];
+}
+
+- (void)testCustomViewSubclass_afterRegisteringKVOAndUsingHitTesting_customPointInsideImplementationShouldGetCalled {
+    CustomViewSubclass *customView = [[CustomViewSubclass alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [customView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
+    [customView setMinimumHitTestWidth:20 height:20];
+    [customView pointInside:CGPointZero withEvent:nil];
+    XCTAssert(!customView.calledCustomPointInsideImplementation, @"The overriden 'pointInside:withEvent' should be called instead.");
+    
+    CustomViewSubclass *customView2 = [[CustomViewSubclass alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [customView2 addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
+    [customView2 pointInside:CGPointZero withEvent:nil];
+    XCTAssert(customView2.calledCustomPointInsideImplementation);
+    
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [customView removeObserver:self forKeyPath:@"frame"];
+    [customView2 removeObserver:self forKeyPath:@"frame"];
 }
 
 #pragma mark - Top left corner -
