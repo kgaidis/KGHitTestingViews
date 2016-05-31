@@ -104,6 +104,36 @@
     [view2 removeObserver:self forKeyPath:@"frame"];
 }
 
+- (void)testView_whenRegisteringForKVOBeforeSettingMinimumWidthHeight_hitAreaShouldAdjust {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    XCTAssertNotNil([view hitTest:CGPointMake(9, 9) withEvent:nil]);
+    XCTAssertNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:44 height:44];
+    XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:10 height:10];
+    XCTAssertNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:44 height:44];
+    XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [view removeObserver:self forKeyPath:@"frame"];
+}
+
+- (void)testView_whenRegisteringForKVOAfterSettingMinimumWidthHeight_hitAreaShouldAdjust {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    XCTAssertNotNil([view hitTest:CGPointMake(9, 9) withEvent:nil]);
+    XCTAssertNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:44 height:44];
+    [view addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:10 height:10];
+    XCTAssertNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [view setMinimumHitTestWidth:44 height:44];
+    XCTAssertNotNil([view hitTest:CGPointMake(20, 20) withEvent:nil]);
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
+    [view removeObserver:self forKeyPath:@"frame"];
+}
+
 - (void)testCustomViewSubclass_afterRegisteringKVOAndUsingHitTesting_customPointInsideImplementationShouldGetCalled {
     CustomViewSubclass *customView = [[CustomViewSubclass alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [customView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
